@@ -69,9 +69,9 @@ DestinationList: Receives a list of destinations to display.
 
 
 
-# Wireframes: 
+## Wireframes: 
 
-HIM Vacations 
+### Vacation Time
 This app will allow people to “share their experience and rate the vacation spots we have taken them to”
 Wireframe
 CRUD User Story
@@ -109,28 +109,30 @@ db.json File Outline json
 
 ### db.json
 ```
-"plaсes":[
+{
+  "plaсes": [
     {
-      id: 1,
-      name: "",
-      location: "",
-      image: "",
-      description: "",
-      cost: 0,
-      days: 0,
-      reviews: [
+      "id": 1,
+      "name": "",
+      "location": "",
+      "image": "",
+      "description": "",
+      "cost": 0,
+      "days": 0,
+      "reviews": [
         {
-          id: 1,
-          name: "",
-          description: "",
-          created: ""
+          "id": 1,
+          "name": "",
+          "description": "",
+          "created": ""
         }
       ]
     }
-]
+  ]
+}
 ```
 
-# Stretch Goals
+## Stretch Goals
 Implement user authentication for personalized experiences.
 Add a reviews/comments section for each destination.
 Integrate a map feature to visualize travel plans.

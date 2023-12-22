@@ -1,0 +1,21 @@
+{
+  "plaсes": [
+    {
+      "id": 1,
+      "name": "",
+      "location": "",
+      "image": "",
+      "description": "",
+      "cost": 0,
+      "days": 0,
+      "reviews": [
+        {
+          "id": 1,
+          "name": "",
+          "description": "",
+          "created": ""
+        }
+      ]
+    }
+  ]
+}
