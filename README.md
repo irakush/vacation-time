@@ -103,7 +103,7 @@ DestinationList: Receives a list of destinations to display.
 
 
 
-# Wireframes: Paste wireframes of your project into this doc, or include a link to your wireframes
+# Wireframes: 
 
 
 
