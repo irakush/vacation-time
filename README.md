@@ -6,20 +6,16 @@
 ## PROJECT PITCH
 
 
-# Owner/s:
+## Owner/s:
 Hadil, Igor, Melissa
 
-
-# Project Name:
+## Project Name:
 Vacation Time  
 
-
-# Phase and Cohort:
+## Phase and Cohort:
 Phase 2 SE-East-111323
 
-
-
-# One sentence app description:
+## One sentence app description:
 This app will allow people to “share their experience and rate the vacation spots we have taken them to”
 Timeline:
 
@@ -28,7 +24,7 @@ Wednesday:
 Thursday:
 Friday : Presentation
 
-# Responsibilities:
+## Responsibilities:
 
 
 Igor: CSS / Extra Patch / External API weather 
@@ -36,8 +32,6 @@ Igor: CSS / Extra Patch / External API weather
 Hadil: db.json / Patch request / Edit / Reviews 
 
 Melissa: HTML/ Delete request - Vacations descriptions / images 
-
-
 
 ## CRUD User Story
 As a user, I want to be able to Create, Read, Update, and Delete my travel plans seamlessly.
@@ -49,8 +43,19 @@ As a user, I want to be able to Create, Read, Update, and Delete my travel plans
 /profile: User profile page for managing personal travel plans and preferences.
 
 
-# Component Hierarchy
+## Component Hierarchy
 
+### App.js
+
+
+![demo](./*.drawio.svg)
+
+
+```
+<App />
+
+
+```
 
 
 App.js
