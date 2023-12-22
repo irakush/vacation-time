@@ -25,14 +25,6 @@ Hadil: db.json / Patch request / Edit / Reviews
 Melissa: HTML/ Delete request - Vacations descriptions / images 
 
 
-Html :
-Db.json : 
-GET request :
-PATCH request :
-DELETE request :
-POST request :
-
-
 ### User Stories:
 MVP: 
 E.g. User will be able to:
