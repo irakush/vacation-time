@@ -1,6 +1,6 @@
 # vacation-time
 
-PROJECT PITCH
+## PROJECT PITCH
 Owner/s:
 Hadil, Igor, Melissa
 Project Name:
@@ -29,7 +29,7 @@ DELETE request :
 POST request :
 
 
-User Stories:
+### User Stories:
 MVP: 
 E.g. User will be able to:
 Search for a vacation spot
