@@ -25,15 +25,6 @@ Hadil: db.json / Patch request / Edit / Reviews
 Melissa: HTML/ Delete request - Vacations descriptions / images 
 
 
-### User Stories:
-MVP: 
-E.g. User will be able to:
-Search for a vacation spot
-Add a review of the vacation spot 
-View all the reviews 
-Share their experience 
-
-
 
 CRUD User Story
 As a user, I want to be able to Create, Read, Update, and Delete my travel plans seamlessly.
@@ -47,15 +38,36 @@ React Router Routes
 
 Component Hierarchy
 App
+
+
+
 Navbar
+
+
 Home
+
+
 FeaturedDestinations
+
+
 Explore
+
+
 DestinationList
+
+
 DestinationCard
+
+
 Profile
+
+
 UserDashboard
+
+
 TravelPlan
+
+
 PlanDetails
 
 
