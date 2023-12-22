@@ -37,38 +37,35 @@ React Router Routes
 
 
 Component Hierarchy
-App
+App.js
 
 
 
-Navbar
+    Header.js
 
 
-Home
 
 
-FeaturedDestinations
+
+        FeaturedDestinations.js
 
 
-Explore
 
 
-DestinationList
+    DestinationList.js
 
 
-DestinationCard
+
+    DestinationCard.js
 
 
-Profile
+
+    UserDashboard.js
 
 
-UserDashboard
 
 
-TravelPlan
-
-
-PlanDetails
+    PlanDetails.js
 
 
 Component Details
