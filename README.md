@@ -1,5 +1,7 @@
 # vacation-time
 
+![demo](./image.webp)
+
 
 ## PROJECT PITCH
 Owner/s:
@@ -150,23 +152,25 @@ db.json File Outline json
 
 ### db.json
 ```
-{
-  id: 1,
-  name: "",
-  location: "",
-  image: "",
-  description: "",
-  cost: 0,
-  days: 0,
-  reviews: [
+"plaсes":[
     {
       id: 1,
       name: "",
+      location: "",
+      image: "",
       description: "",
-      created: ""
+      cost: 0,
+      days: 0,
+      reviews: [
+        {
+          id: 1,
+          name: "",
+          description: "",
+          created: ""
+        }
+      ]
     }
-  ]
-}
+]
 ```
 
 Stretch Goals
