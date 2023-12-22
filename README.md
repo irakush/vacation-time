@@ -7,7 +7,7 @@
 Owner/s:
 Hadil, Igor, Melissa
 Project Name:
-HIM Vacations 
+Vacation Time  
 Phase and Cohort:
 Phase 2 SE-East-111323
 One sentence app description:
