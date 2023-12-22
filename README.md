@@ -47,47 +47,7 @@ As a user, I want to be able to Create, Read, Update, and Delete my travel plans
 
 ### App.js
 
-
-![demo](./*.drawio.svg)
-
-
-```
-<App />
-
-
-```
-
-
-App.js
-
-
-
-    Header.js
-
-
-
-
-
-        FeaturedDestinations.js
-
-
-
-
-    DestinationList.js
-
-
-
-    DestinationCard.js
-
-
-
-    UserDashboard.js
-
-
-
-
-    PlanDetails.js
-
+![demo](./drawio.png)
 
 # Component Details
 Navbar: Navigation bar for easy access to different sections.
@@ -109,26 +69,6 @@ DestinationList: Receives a list of destinations to display.
 
 
 # Wireframes: 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 HIM Vacations 
 This app will allow people to “share their experience and rate the vacation spots we have taken them to”
