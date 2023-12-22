@@ -47,7 +47,8 @@ As a user, I want to be able to Create, Read, Update, and Delete my travel plans
 
 ### App.js
 
-![demo](./drawio.png)
+<!-- ![demo](./drawio.png) -->
+![demo](./diagram.svg)
 
 # Component Details
 Navbar: Navigation bar for easy access to different sections.
