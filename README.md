@@ -105,7 +105,7 @@ DestinationList: Receives a list of destinations to display.
 db.json File Outline json
 
 
-### Copy code
+### db.json
 ```
 {
   id: 1,
