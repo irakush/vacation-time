@@ -19,7 +19,9 @@ Friday : Presentation
 
 Responsibilities:
 Igor: CSS / Extra Patch / External API weather 
+
 Hadil: db.json / Patch request / Edit / Reviews 
+
 Melissa: HTML/ Delete request - Vacations descriptions / images 
 
 
