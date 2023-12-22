@@ -108,30 +108,21 @@ db.json File Outline json
 ### Copy code
 ```
 {
- "destinations": [
- {
- "id": 1,
- "name": "Tropical Paradise",
- "description": "Escape to a tropical paradise with white sandy beaches.",
- // ... other properties
- },
- // ... additional destinations
- ],
- "users": [
- {
- "id": 1,
- "username": "user123",
- "travel_plans": [
- {
- "id": 1,
- "destination_id": 1,
- // ... other properties
- },
- // ... additional travel plans
- ]
- },
- // ... additional users
- ]
+  id: 1,
+  name: "",
+  location: "",
+  image: "",
+  description: "",
+  cost: 0,
+  days: 0,
+  reviews: [
+    {
+      id: 1,
+      name: "",
+      description: "",
+      created: ""
+    }
+  ]
 }
 ```
 
