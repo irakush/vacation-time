@@ -102,9 +102,11 @@ Events
 DestinationCard: Click event to view detailed information.
 Props
 DestinationList: Receives a list of destinations to display.
-db.json File Outline
-json
-Copy code
+db.json File Outline json
+
+
+### Copy code
+```
 {
  "destinations": [
  {
@@ -131,6 +133,7 @@ Copy code
  // ... additional users
  ]
 }
+```
 
 Stretch Goals
 Implement user authentication for personalized experiences.
