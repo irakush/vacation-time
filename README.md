@@ -4,13 +4,22 @@
 
 
 ## PROJECT PITCH
-Owner/s:
+
+
+# Owner/s:
 Hadil, Igor, Melissa
-Project Name:
+
+
+# Project Name:
 Vacation Time  
-Phase and Cohort:
+
+
+# Phase and Cohort:
 Phase 2 SE-East-111323
-One sentence app description:
+
+
+
+# One sentence app description:
 This app will allow people to “share their experience and rate the vacation spots we have taken them to”
 Timeline:
 
@@ -19,7 +28,9 @@ Wednesday:
 Thursday:
 Friday : Presentation
 
-Responsibilities:
+# Responsibilities:
+
+
 Igor: CSS / Extra Patch / External API weather 
 
 Hadil: db.json / Patch request / Edit / Reviews 
@@ -28,17 +39,17 @@ Melissa: HTML/ Delete request - Vacations descriptions / images
 
 
 
-CRUD User Story
+## CRUD User Story
 As a user, I want to be able to Create, Read, Update, and Delete my travel plans seamlessly.
 
 
-React Router Routes
+## React Router Routes
 /home: Home page displaying featured destinations and travel inspiration.
 /explore: Explore page for browsing different destinations and packages.
 /profile: User profile page for managing personal travel plans and preferences.
 
 
-Component Hierarchy
+# Component Hierarchy
 
 
 
@@ -73,7 +84,7 @@ App.js
     PlanDetails.js
 
 
-Component Details
+# Component Details
 Navbar: Navigation bar for easy access to different sections.
 Home: Displaying featured destinations and travel inspiration.
 Explore: Listing destinations with brief information.
@@ -92,7 +103,7 @@ DestinationList: Receives a list of destinations to display.
 
 
 
-Wireframes: Paste wireframes of your project into this doc, or include a link to your wireframes
+# Wireframes: Paste wireframes of your project into this doc, or include a link to your wireframes
 
 
 
@@ -173,7 +184,7 @@ db.json File Outline json
 ]
 ```
 
-Stretch Goals
+# Stretch Goals
 Implement user authentication for personalized experiences.
 Add a reviews/comments section for each destination.
 Integrate a map feature to visualize travel plans.
