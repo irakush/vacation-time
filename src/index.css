@@ -235,6 +235,7 @@ input {
 
 .horizontal-card {
   display: flex;
+  background-color: #eeeeee;
   width: 100%;
   max-width: 1000px;
   /* Adjust the maximum width as needed */

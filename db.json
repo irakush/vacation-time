@@ -11,9 +11,9 @@
       "reviews": [
         {
           "id": 1,
-          "name": "",
-          "description": "",
-          "created": ""
+          "name": "Bob",
+          "description": "The most wonderful place on the planet. I will come back for sure and more than once. I recommend everyone to visit this place.",
+          "created": "27/08/2023"
         }
       ]
     },

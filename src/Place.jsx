@@ -1,10 +1,14 @@
 import React from 'react';
 
-function Place({ eachPlace }) {
+function Place({ eachPlace, handlePlace }) {
   const { name, image, location } = eachPlace
 
+  function showPlaceDetails() {
+    handlePlace(eachPlace)
+  }
+
   return (
-    <div className="card">
+    <div className="card" onClick={showPlaceDetails}>
       <img
         src={image}
         alt="Avatar" />
