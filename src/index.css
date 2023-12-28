@@ -153,8 +153,8 @@ input {
 .card {
   /* flex: 0 2 calc(20% - 80px); */
   width: 180px;
-  height: 380px;
-  background-color: #f0f0f0;
+  height: 360px;
+  background-color: #eeeeee;
   padding: 0px;
   margin: 10px;
   /* Расстояние между карточками */
@@ -202,7 +202,7 @@ input {
   width: 175px;
   padding-top: 30px;
   /* Remove any default margin */
-  color: rgba(162, 127, 127, 0.647);
+  color: rgba(107, 122, 124, 0.647);
   /* Remove default top margin for h2 */
 }
 
@@ -232,3 +232,35 @@ input {
 
 
 /* =============================================== */
+
+.horizontal-card {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  /* Adjust the maximum width as needed */
+  margin: 10px auto;
+  /* Optional margin for centering */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Optional box shadow for card effect */
+}
+
+.horizontal-card-image {
+  height: 300px;
+  width: 30%;
+  object-fit: cover;
+}
+
+.horizontal-card-content {
+  text-align: left;
+  padding: 20px;
+}
+
+.horizontal-card-content h2 {
+  color: #3A757A;
+  margin-top: 0;
+  /* Remove default margin from h2 */
+}
+
+.horizontal-card-reviews {
+  margin-top: 10px;
+}

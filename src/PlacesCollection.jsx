@@ -1,7 +1,7 @@
 import React from 'react';
 import Place from './Place.jsx'
 
-function PlacesList({ placesArray }) {
+function PlacesCollection({ placesArray }) {
 
   const placeCards = placesArray.map(eachPlace => {
     return <Place eachPlace={eachPlace} key={eachPlace.id} />
@@ -10,11 +10,12 @@ function PlacesList({ placesArray }) {
   return (
     <div className="card-container">
       {placeCards}
-      <br />
-      <br />
-      <br />
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   )
 }
 
-export default PlacesList;
+export default PlacesCollection;
