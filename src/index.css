@@ -1,13 +1,234 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: Roboto, Arial, sans-serif;
+  background-color: #F6F4EB;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  position: absolute;
+  bottom: 1;
+  left: 1;
+  margin: 0;
+  width: 170px;
+  /* Remove any default margin */
+  color: #ffffff;
+  /* Remove default top margin for h2 */
+  margin-top: 21px;
+  margin-bottom: 0;
 }
+
+.new-place {
+  bottom: 10;
+  left: 10;
+  margin: 10;
+  width: 170px;
+  /* Remove any default margin */
+  color: #ffffff;
+  /* Remove default top margin for h2 */
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+/* header {
+  background-color: #0C334D;
+  height: 50px;
+  color: #fff;
+  padding: 1px;
+  padding-left: 50px;
+  text-align: left;
+  width: 100%;
+  position: fixed;
+} */
+
+.split-header {
+  display: flex;
+  height: 41px;
+  justify-content: space-between;
+  background-color: #0C334D;
+  /* Adjust the background color */
+  color: #fff;
+  /* Adjust the text color */
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+}
+
+/* .left-section, .right-section {
+  flex: 1;
+}
+
+.left-section h1, .right-section h1 {
+  margin: 0;
+} */
+
+.left-section {
+  flex: 1;
+  padding-left: 50px;
+}
+
+.right-section {
+  flex: 1;
+  padding-right: 50px;
+  text-align: right;
+  vertical-align: bottom;
+}
+
+.orange-color {
+  color: #FB8D57;
+}
+
+/* .left-section h1,
+.right-section h1 {
+  margin: 0;
+} */
+
+footer {
+  height: 25px;
+  background-color: #0C334D;
+  /* Adjust the background color */
+  color: #fff;
+  /* Adjust the text color */
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+section {
+  height: 400px;
+  /* Высота вашей секции */
+  /* background-image: url('https://c.myholidays.com/blog/blog/content/images/2021/01/Places-To-Visit-In-Italy.webp'); */
+  /* background-image: url('https://static.independent.co.uk/s3fs-public/thumbnails/image/2021/06/02/20/istock-833264986.jpg'); */
+  background-image: url('https://thetourguy.com/wp-content/uploads/2021/08/Where-to-Stay-Santorini-1440-x-675.jpg');
+  /* Путь к вашему изображению */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+}
+
+/* Дополнительные стили для адаптации размеров и других элементов */
+
+input {
+  position: absolute;
+  top: 150px;
+  /* top: 30%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  /* Центрирование по горизонтали */
+
+  /* display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1000px; */
+  /* Adjust as needed */
+}
+
+.card {
+  /* flex: 0 2 calc(20% - 80px); */
+  width: 180px;
+  height: 380px;
+  background-color: #f0f0f0;
+  padding: 0px;
+  margin: 10px;
+  /* Расстояние между карточками */
+  border-radius: 5px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+.card-text {
+  /* padding-top: 0px;
+  padding-left: 5px; */
+  padding: 15px;
+  text-align: left;
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.text-title {
+  color: #3A757A;
+}
+
+.location-text {
+  color: #78788177;
+}
+
+.card p {
+  position: absolute;
+  bottom: 1;
+  left: 1;
+  margin: 10;
+  width: 175px;
+  padding-top: 30px;
+  /* Remove any default margin */
+  color: rgba(162, 127, 127, 0.647);
+  /* Remove default top margin for h2 */
+}
+
+
+.card h3 {
+  position: absolute;
+  bottom: 1;
+  left: 1;
+  margin: 0;
+  width: 175px;
+  /* Remove any default margin */
+  color: #3A757A;
+  /* Remove default top margin for h2 */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* h4 {
+  position: absolute;
+   bottom: 0;
+   left: 0;
+   margin: 0;
+   padding: 10px; 
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.8); 
+} */
+
+
+/* =============================================== */

@@ -1,11 +1,62 @@
 {
-  "plaсes": [
+  "places": [
     {
       "id": 1,
-      "name": "",
-      "location": "",
-      "image": "",
-      "description": "",
+      "name": "Heart of the Fjords",
+      "location": "Bergen, Norway",
+      "image": "https://cdn.kimkim.com/files/a/content_articles/featured_photos/048c06fa82780c7d7ab2fe1b7405b3a38ddc37a7/big-b25e7c9df7cb2af0177c13781613327d.jpg",
+      "description": "Best place in the world!",
+      "cost": 0,
+      "days": 0,
+      "reviews": [
+        {
+          "id": 1,
+          "name": "",
+          "description": "",
+          "created": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "36 Hours in Paris",
+      "location": "Paris, France",
+      "image": "https://cdn.pixabay.com/photo/2013/04/11/19/46/building-102840_1280.jpg",
+      "description": "Best place in the world!",
+      "cost": 0,
+      "days": 0,
+      "reviews": [
+        {
+          "id": 1,
+          "name": "",
+          "description": "",
+          "created": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Marvellous City",
+      "location": "Rio de Janeiro, Brazil",
+      "image": "https://latinexclusive.com/sites/default/files/styles/magazine_post_header_1170x790/public/guanabara_bay.jpg?itok=vaP2pPj4",
+      "description": "Best place in the world!",
+      "cost": 0,
+      "days": 0,
+      "reviews": [
+        {
+          "id": 1,
+          "name": "",
+          "description": "",
+          "created": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "The Sunny Side of Life",
+      "location": "Maldives, Republic of Maldives",
+      "image": "https://internationaltennis-travel.com/wp-content/uploads/2019/01/maldives-1240-1170x566.jpg",
+      "description": "Best place in the world!",
       "cost": 0,
       "days": 0,
       "reviews": [
