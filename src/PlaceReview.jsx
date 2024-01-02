@@ -1,30 +1,21 @@
-import React, { useState } from 'react';
+// PlaceReview.jsx
+import React from 'react';
+import ReviewForm from './ReviewForm';
 
-function AddReviewForm({ onAddReview }) {
-  const [review, setReview] = useState('');
-
-  const handleReviewChange = (e) => {
-    setReview(e.target.value);
-  };
-
-  const handleAddReview = () => {
-    // Validate if the review is not empty before adding
-    if (review.trim() !== '') {
-      onAddReview(review);
-      setReview('');
-    }
-  };
-
+function PlaceReview({ eachReview, onReviewSubmit }) {
   return (
-    <div>
-      <textarea
-        placeholder="Add your review..."
-        value={review}
-        onChange={handleReviewChange}
-      />
-      <button onClick={handleAddReview}>Add Review</button>
+    <div className="horizontal-card-reviews">
+      {/* Render existing reviews */}
+      {eachReview.map((review) => (
+        <div key={review.id}>
+          <p>{review.name}</p>
+          <p>{review.comment}</p>
+        </div>
+      ))}
+      {/* Render the review form */}
+      <ReviewForm onSubmit={onReviewSubmit} />
     </div>
   );
 }
 
-export default AddReviewForm;
+export default PlaceReview;

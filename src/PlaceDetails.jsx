@@ -1,15 +1,17 @@
-import React from 'react';
-import MyPlaceReview from './PlaceReview';
+
+import React, { useState } from 'react';
+import PlaceReview from './PlaceReview';
 
 function PlaceDetails({ details }) {
-  console.log(details);
+  const [reviews, setReviews] = useState(details.reviews || []);
+
+  const handleReviewSubmit = (reviewData) => {
+  
+    setReviews([...reviews, { ...reviewData, id: reviews.length + 1 }]);
+  };
 
   if (Object.keys(details).length > 0) {
-    const { name, image, location, description, reviews } = details;
-
-    const reviewsDetails = reviews.map(eachReview => (
-      <MyPlaceReview eachReview={eachReview} key={eachReview.id} />
-    ));
+    const { name, image, location, description } = details;
 
     return (
       <div className="horizontal-card">
@@ -18,14 +20,15 @@ function PlaceDetails({ details }) {
           <h2>{name}</h2>
           <h4>{location}</h4>
           <small>{description}</small>
-          {reviewsDetails}
-          
+       
+          <PlaceReview eachReview={reviews} onReviewSubmit={handleReviewSubmit} />
         </div>
       </div>
     );
   } else {
-    return <></>; // or any placeholder content when details are not available
+    return <></>;
   }
 }
 
 export default PlaceDetails;
+
