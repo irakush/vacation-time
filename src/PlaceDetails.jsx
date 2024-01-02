@@ -1,15 +1,15 @@
 import React from 'react';
-import PlaceReview from './PlaceReview'
+import MyPlaceReview from './PlaceReview';
 
 function PlaceDetails({ details }) {
-  console.log(details)
+  console.log(details);
 
   if (Object.keys(details).length > 0) {
-    const { name, image, location, description, reviews } = details
+    const { name, image, location, description, reviews } = details;
 
-    const reviewsDetails = reviews.map(eachReview => {
-      return <PlaceReview eachReview={eachReview} key={eachReview.id} />
-    })
+    const reviewsDetails = reviews.map(eachReview => (
+      <MyPlaceReview eachReview={eachReview} key={eachReview.id} />
+    ));
 
     return (
       <div className="horizontal-card">
@@ -19,13 +19,12 @@ function PlaceDetails({ details }) {
           <h4>{location}</h4>
           <small>{description}</small>
           {reviewsDetails}
+          
         </div>
       </div>
-    )
+    );
   } else {
-    return (
-      <></>
-    )
+    return <></>; // or any placeholder content when details are not available
   }
 }
 

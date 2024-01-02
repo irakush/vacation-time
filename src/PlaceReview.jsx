@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function PlaceReview({ eachReview }) {
-  const { name, description, created } = eachReview;
+function AddReviewForm({ onAddReview }) {
+  const [review, setReview] = useState('');
+
+  const handleReviewChange = (e) => {
+    setReview(e.target.value);
+  };
+
+  const handleAddReview = () => {
+    // Validate if the review is not empty before adding
+    if (review.trim() !== '') {
+      onAddReview(review);
+      setReview('');
+    }
+  };
 
   return (
-    <div className="horizontal-card-reviews">
-      <hr />
-      <small>{created}</small>
-      <p><small><b>{description}</b></small></p>
-      <p>{name}</p>
+    <div>
+      <textarea
+        placeholder="Add your review..."
+        value={review}
+        onChange={handleReviewChange}
+      />
+      <button onClick={handleAddReview}>Add Review</button>
     </div>
-  )
+  );
 }
 
-export default PlaceReview;
+export default AddReviewForm;
