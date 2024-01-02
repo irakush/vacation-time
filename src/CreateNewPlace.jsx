@@ -1,4 +1,3 @@
-// CreateNewPlace.jsx
 import React, { useState } from 'react';
 
 function CreateNewPlace({ onCreatePlace, onCancel }) {
@@ -33,7 +32,7 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
   };
 
   return (
-    <div>
+    <div className>
       <h2>Create New Place</h2>
       <form onSubmit={handleSubmit}>
         <label>

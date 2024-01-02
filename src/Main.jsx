@@ -50,15 +50,15 @@ function Main({ isCreateNewPlace }) {
   return (
     <>
       <Search />
-      <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
-
-      {/* Conditionally render PlaceDetails or CreateNewPlace based on isCreateNewPlace */}
-      {isCreateNewPlace ? (
-        <CreateNewPlace onCreatePlace={createNewPlace} />
-      ) : (
-        <PlaceDetails details={placeDetails} />
-      )}
-
+      <div className="main-container">
+        <div className="places-details-container">
+          <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
+          <PlaceDetails details={placeDetails} />
+        </div>
+        <div className="create-new-place-container">
+          {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
+        </div>
+      </div>
       <br />
       <br />
       <br />

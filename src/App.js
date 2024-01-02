@@ -1,4 +1,3 @@
-// App.jsx
 import './App.css';
 import React, { useState } from 'react';
 import Header from './Header.jsx';
