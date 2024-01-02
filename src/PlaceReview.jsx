@@ -1,33 +1,16 @@
-import React, { useState } from 'react';
-import { patchReview } from './api';
+import React from 'react';
 
-const PlaceReview = ({ placeId, reviewId }) => {
- const [newReview, setNewReview] = useState({});
+function PlaceReview() {
 
- const handleSubmit = async (e) => {
-    e.preventDefault();
-    await patchReview(placeId, reviewId, newReview);
-    // Perform any necessary actions after the review has been updated
- };
 
- const handleChange = (e) => {
-    setNewReview({ ...newReview, [e.target.name]: e.target.value });
- };
-
- return (
-    <form onSubmit={handleSubmit}>
-      <label>Name:</label>
-      <input type="text" name="name" onChange={handleChange} />
-
-      <label>Description:</label>
-      <textarea name="description" onChange={handleChange} />
-
-      <label>Created:</label>
-      <input type="text" name="created" onChange={handleChange} />
-
-      <button type="submit">Update Review</button>
-    </form>
- );
-};
+  return (
+    <div className="horizontal-card-reviews">
+      <hr />
+      <small></small>
+      <p><small><b></b></small></p>
+      <p></p>
+    </div>
+  )
+}
 
 export default PlaceReview;
