@@ -12,30 +12,13 @@ function ReviewForm({ onSubmit }) {
     setComment(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('http://example.com/api/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, comment }),
-      });
+    onSubmit({ name, comment });
 
-      if (response.ok) {
-        const newReview = await response.json();
-        onSubmit(newReview);
-        setName('');
-        setComment('');
-      } else {
-
-        console.error('Error creating review:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
+    setName('');
+    setComment('');
   };
 
   return (
