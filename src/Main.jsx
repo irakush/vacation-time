@@ -1,4 +1,3 @@
-// Main.jsx
 import React, { useState, useEffect } from 'react';
 import Search from './Search.jsx';
 import PlacesCollection from './PlacesCollection';
@@ -13,10 +12,8 @@ function Main({ isCreateNewPlace }) {
 
   const handlePlace = (place) => {
     if (isCreateNewPlace) {
-      // For a newly created place, set its details directly
       setPlaceDetails(place);
     } else {
-      // For an existing place, set its details as usual
       setPlaceDetails(place);
     }
   };

@@ -27,12 +27,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Update Review</h1>
       <PlaceReview placeId="1" reviewId="1" />
       <Header onNewPlaceClick={handleNewPlaceClick} />
       <Main
         isCreateNewPlace={isCreateNewPlace}
-        onCreatePlace={createNewPlace} // Use createNewPlace here
+        onCreatePlace={createNewPlace} 
         onCancelCreatePlace={handleCancelCreatePlace}
         onPlaceClick={handlePlace}
       />
