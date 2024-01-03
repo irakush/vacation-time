@@ -1,39 +1,30 @@
 import React, { useState } from 'react';
 import PlaceReview from './PlaceReview';
-import PlaceWeather from './PlaceWeather';
-import PlaceReviewForm from './PlaceReviewForm'
 
 function PlaceDetails({ details }) {
-  console.log(details)
+  const [reviews, setReviews] = useState(details.reviews || []);
+
+  const handleReviewSubmit = (reviewData) => {
+    setReviews([...reviews, { ...reviewData, id: reviews.length + 1, placeId: details.id }]);
+  };
 
   if (Object.keys(details).length > 0) {
-    const { name, image, location, description, reviews } = details
-
-    console.log(details.location.split(',')[0])
-
-    const reviewsDetails = reviews.map(eachReview => {
-      return <PlaceReview eachReview={eachReview} key={eachReview.id} />
-    })
+    const { name, image, location, description } = details;
 
     return (
       <div className="horizontal-card">
         <img src={image} alt="Description" className="horizontal-card-image" />
         <div className="horizontal-card-content">
-          <button>Edit</button>
-          <button>Delete</button> <br /><br />
           <h2>{name}</h2>
           <h4>{location}</h4>
           <small>{description}</small>
-          {reviewsDetails}
-          <PlaceReviewForm />
+
+          <PlaceReview eachReview={reviews.filter(review => review.placeId === details.id)} onReviewSubmit={handleReviewSubmit} />
         </div>
-        <PlaceWeather city={details.location.split(',')[0]} />
       </div>
-    )
+    );
   } else {
-    return (
-      <></>
-    )
+    return <></>;
   }
 }
 
