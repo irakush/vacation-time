@@ -117,6 +117,14 @@
       "description": "Disney World Florida is a world-renowned resort located in Orlando, Florida. It consists of four theme parks, two water parks, over 25 resort hotel properties, and a variety of additional entertainment offerings. The resort offers a variety of attractions, rides, and shows for visitors of all ages. Visitors can also enjoy a range of dining options, shopping, and other entertainment activities. ",
       "reviews": [],
       "id": 5
+    },
+    {
+      "name": "Barcelona, Spain",
+      "image": "https://earth.esa.int/web/earth-watching/content/documents/257246/1608677/Barcelona.jpg",
+      "location": "Barcelona, Spain",
+      "description": "Best place in the world!",
+      "reviews": [],
+      "id": 6
     }
   ]
 }

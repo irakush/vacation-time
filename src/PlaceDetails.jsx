@@ -19,6 +19,8 @@ function PlaceDetails({ details }) {
       <div className="horizontal-card">
         <img src={image} alt="Description" className="horizontal-card-image" />
         <div className="horizontal-card-content">
+          <button>Edit</button>
+          <button>Delete</button> <br /><br />
           <h2>{name}</h2>
           <h4>{location}</h4>
           <small>{description}</small>

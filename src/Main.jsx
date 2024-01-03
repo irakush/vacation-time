@@ -52,9 +52,7 @@ function Main({ isCreateNewPlace }) {
           <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
           <PlaceDetails details={placeDetails} />
         </div>
-        <div className="create-new-place-container">
-          {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
-        </div>
+        {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>
       <br />
       <br />

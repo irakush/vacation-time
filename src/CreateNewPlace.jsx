@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-function CreateNewPlace({ onCreatePlace, onCancel }) {
+function CreateNewPlace({ onCreatePlace }) {
   const [newPlace, setNewPlace] = useState({
     name: '',
     image: '',
     location: '',
-    description: '', 
-    reviews: [], 
+    description: '',
+    reviews: [],
   });
 
   const handleChange = (e) => {
@@ -19,9 +19,9 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     onCreatePlace(newPlace);
-   
+
     setNewPlace({
       name: '',
       image: '',
@@ -32,7 +32,7 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
   };
 
   return (
-    <div className>
+    <div className="create-new-place-container">
       <h2>Create New Place</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -42,6 +42,7 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
             name="name"
             value={newPlace.name}
             onChange={handleChange}
+            required
           />
         </label>
         <br />
@@ -52,6 +53,7 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
             name="image"
             value={newPlace.image}
             onChange={handleChange}
+            required
           />
         </label>
         <br />
@@ -62,6 +64,7 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
             name="location"
             value={newPlace.location}
             onChange={handleChange}
+            required
           />
         </label>
         <br />
@@ -71,13 +74,11 @@ function CreateNewPlace({ onCreatePlace, onCancel }) {
             name="description"
             value={newPlace.description}
             onChange={handleChange}
+            required
           />
         </label>
         <br />
         <button type="submit">Create Place</button>
-        <button type="button" onClick={onCancel}>
-          Cancel
-        </button>
       </form>
     </div>
   );
