@@ -4,6 +4,7 @@ function Place({ eachPlace, handlePlace }) {
   const { name, image, location } = eachPlace
 
   function showPlaceDetails() {
+    console.log('clicked')
     handlePlace(eachPlace)
   }
 

@@ -4,7 +4,7 @@ function Search() {
   return (
     <section>
       <div className="search-container">
-        <input type="text" placeholder="Search" />
+        <input className="search" type="text" placeholder="Search" />
       </div>
     </section>
   )

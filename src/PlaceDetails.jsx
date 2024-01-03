@@ -1,11 +1,15 @@
-import React from 'react';
-import PlaceReview from './PlaceReview'
+import React, { useState } from 'react';
+import PlaceReview from './PlaceReview';
+import PlaceWeather from './PlaceWeather';
+import PlaceReviewForm from './PlaceReviewForm'
 
 function PlaceDetails({ details }) {
   console.log(details)
 
   if (Object.keys(details).length > 0) {
     const { name, image, location, description, reviews } = details
+
+    console.log(details.location.split(',')[0])
 
     const reviewsDetails = reviews.map(eachReview => {
       return <PlaceReview eachReview={eachReview} key={eachReview.id} />
@@ -19,7 +23,9 @@ function PlaceDetails({ details }) {
           <h4>{location}</h4>
           <small>{description}</small>
           {reviewsDetails}
+          <PlaceReviewForm />
         </div>
+        <PlaceWeather city={details.location.split(',')[0]} />
       </div>
     )
   } else {
