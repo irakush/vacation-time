@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState } from 'react';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
-import PlaceReview from './PlaceReview.jsx';
 
 
 function App() {
@@ -27,7 +26,6 @@ function App() {
 
   return (
     <div className="App">
-      <PlaceReview placeId="1" reviewId="1" />
       <Header onNewPlaceClick={handleNewPlaceClick} />
       <Main
         isCreateNewPlace={isCreateNewPlace}
