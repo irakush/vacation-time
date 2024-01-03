@@ -1,53 +1,40 @@
 import React, { useState } from 'react';
 
 function ReviewForm({ onSubmit }) {
-  const [name, setName] = useState('');
-  const [comment, setComment] = useState('');
+  const d = new Date();
+  const tempReview = {
+    name: '',
+    description: '',
+    created: d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
+  }
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+  const [review, setReview] = useState(tempReview);
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
-  };
+  console.log('review: ', review)
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setReview({ ...review, [name]: value });
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('http://example.com/api/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, comment }),
-      });
+    onSubmit(review);
 
-      if (response.ok) {
-        const newReview = await response.json();
-        onSubmit(newReview);
-        setName('');
-        setComment('');
-      } else {
-
-        console.error('Error creating review:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
+    setReview(tempReview)
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
         Name:
-        <textarea type="text" value={name} onChange={handleNameChange} required />
+        <input type="text" name="name" value={review.name} onChange={handleChange} required />
       </label>
       <br />
       <label>
         Comment:
-        <textarea value={comment} onChange={handleCommentChange} required />
+        <input type="text" name="description" value={review.description} onChange={handleChange} required />
       </label>
       <br />
       <button type="submit">Post Review</button>

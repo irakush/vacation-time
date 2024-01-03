@@ -8,6 +8,8 @@ function Place({ eachPlace, handlePlace }) {
     handlePlace(eachPlace)
   }
 
+  console.log(process.env.REACT_APP_API_KEY)
+
   return (
     <div className="card" onClick={showPlaceDetails}>
       <img
