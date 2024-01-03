@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 function ReviewForm({ onSubmit }) {
@@ -15,9 +14,9 @@ function ReviewForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+
     onSubmit({ name, comment });
-    
+
     setName('');
     setComment('');
   };
@@ -40,5 +39,3 @@ function ReviewForm({ onSubmit }) {
 }
 
 export default ReviewForm;
-
-
