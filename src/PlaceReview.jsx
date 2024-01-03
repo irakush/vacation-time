@@ -1,14 +1,14 @@
 import React from 'react';
 
-function PlaceReview({ eachReview }) {
-  const { name, description, created } = eachReview;
+function PlaceReview() {
+
 
   return (
     <div className="horizontal-card-reviews">
       <hr />
-      <small>{created}</small>
-      <p><small><b>{description}</b></small></p>
-      <p>{name}</p>
+      <small></small>
+      <p><small><b></b></small></p>
+      <p></p>
     </div>
   )
 }
