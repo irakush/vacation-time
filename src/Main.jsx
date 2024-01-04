@@ -9,6 +9,7 @@ function Main({ isCreateNewPlace }) {
   const URL = 'http://localhost:3001/places';
   const [placesArray, setPlacesArray] = useState([]);
   const [placeDetails, setPlaceDetails] = useState({});
+  const [searchTerm, setSearchTerm] = useState("")
   const [isEditReview, setIsEditReview] = useState(false)
   const [editReview, setEditReview] = useState({})
 
@@ -60,9 +61,7 @@ function Main({ isCreateNewPlace }) {
       <Search />
       <div className="main-container">
         <div className="places-details-container">
-          <PlacesCollection
-            placesArray={placesArray}
-            handlePlace={handlePlace} />
+          <PlacesCollection placesArray={displayedPlaces} handlePlace={handlePlace} />
           <PlaceDetails
             details={placeDetails}
             handlePlace={handlePlace}
