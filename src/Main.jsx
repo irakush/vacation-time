@@ -56,8 +56,9 @@ function Main({ isCreateNewPlace }) {
       .catch((error) => console.log(error));
   };
 
+  // Search ==================================
   const onHandleSearch = (searchValue) => {
-  setSearchTerm(searchValue);
+    setSearchTerm(searchValue);
   }
   console.log(searchTerm);
 
@@ -65,11 +66,23 @@ function Main({ isCreateNewPlace }) {
     return place.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  // Delete ==================================
+  const handleDelete = (id) => {
+    fetch(`${URL}/${id}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        setPlacesArray((prevPlaces) => prevPlaces.filter((place) => place.id !== id));
+        setPlaceDetails({});
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
-      <Search  
-      searchTerm={searchTerm}
-      onHandleSearch={onHandleSearch}
+      <Search
+        searchTerm={searchTerm}
+        onHandleSearch={onHandleSearch}
       />
       <div className="main-container">
         <div className="places-details-container">
@@ -80,7 +93,8 @@ function Main({ isCreateNewPlace }) {
             onEditReview={onEditReview}
             isEditReview={isEditReview}
             cnahgePostOrEdit={cnahgePostOrEdit}
-            editReview={editReview} />
+            editReview={editReview}
+            onDelete={handleDelete} />
         </div>
         {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>
