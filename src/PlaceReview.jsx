@@ -1,15 +1,18 @@
 import React from 'react';
-import ReviewForm from './ReviewForm';
 
-function PlaceReview({ eachReview }) {
+function PlaceReview({ eachReview, onDelete }) {
   const { name, description, created } = eachReview;
+
+  function deleteReview() {
+    onDelete(eachReview)
+  }
 
   return (
     <div className="horizontal-card-reviews">
       <hr />
       <small>{created}</small>
       <p><small><b>{description}</b></small></p>
-      <p>{name}</p>
+      <p>{name}</p><button>Edit</button><button onClick={deleteReview}>Delete</button>
     </div>
   )
 }

@@ -2,45 +2,43 @@ import React, { useState } from 'react';
 import PlaceReview from './PlaceReview';
 import ReviewForm from './ReviewForm';
 
-function PlaceDetails({ details }) {
-  const [reviewsDetails, setReviewsDetails] = useState(details.reviews || []);
-
-  // const handleReviewSubmit = (reviewData) => {
-  //   setReviews([...reviews, { ...reviewData, id: reviews.length + 1, placeId: details.id }]);
-  // };
-
-  useState(details.reviews)
-
+function PlaceDetails({ details, handlePlace }) {
   console.log('1 details :: ', details)
-  console.log('2 details.reviews :: ', details.reviews)
-  console.log('3 PlaceDetails reviews: ', reviewsDetails)
+  const reviewsArr = details.reviews
+
   const onSubmit = (newReview) => {
-    console.log('onSubmit reviews: ', reviewsDetails)
-    console.log('onSubmit newReview: ', newReview)
+    reviewsArr.push(newReview)
+    patchReviewInDB(reviewsArr)
+  }
 
+  const onDelete = (deletedReview) => {
+    const reviewsWTDeleted = reviewsArr.filter(eachReview => {
+      return eachReview.name !== deletedReview.name
+    })
+    patchReviewInDB(reviewsWTDeleted)
+  }
 
-    const newArr = reviewsDetails.push(newReview)
-
-    console.log('onSubmit reviews: ', reviewsDetails)
-
-    console.log('onSubmit newArr: ', newArr)
-
+  function patchReviewInDB(reviewsArray) {
     fetch(`http://localhost:3001/places/${details.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify({ ...details.reviews, newReview })
+      body: JSON.stringify({ ...details, reviews: reviewsArray })
     })
       .then(res => res.json())
-      .then(data => console.log('RES DATA: ', data))
+      .then(data => {
+        console.log('RES DATA: ', data)
+        handlePlace(data)
+      })
   }
 
   if (Object.keys(details).length > 0) {
     const { name, image, location, description, reviews } = details;
 
     const reviewsDetails = reviews.map(eachReview => {
-      return <PlaceReview eachReview={eachReview} key={eachReview.id} />
+      console.log('create Review Details')
+      return <PlaceReview eachReview={eachReview} key={eachReview.name} onDelete={onDelete} />
     })
 
     return (
