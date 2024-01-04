@@ -4,6 +4,7 @@ import PlacesCollection from './PlacesCollection';
 import PlaceDetails from './PlaceDetails.jsx';
 import Footer from './Footer.jsx';
 import CreateNewPlace from './CreateNewPlace.jsx';
+import EditForm from './EditForm';
 
 function Main({ isCreateNewPlace }) {
   const URL = 'http://localhost:3001/places';
@@ -12,13 +13,16 @@ function Main({ isCreateNewPlace }) {
   const [searchTerm, setSearchTerm] = useState("")
   const [isEditReview, setIsEditReview] = useState(false)
   const [editReview, setEditReview] = useState({})
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedPlace, setEditedPlace] = useState(null);
 
   const handlePlace = (place) => {
-    if (isCreateNewPlace) {
-      setPlaceDetails(place);
-    } else {
-      setPlaceDetails(place);
-    }
+    // if (isCreateNewPlace) {
+    //   setPlaceDetails(place);
+    // } else {
+    //   setPlaceDetails(place);
+    // }
+    setPlaceDetails(place);
   };
 
   const onEditReview = (review) => {
@@ -78,6 +82,40 @@ function Main({ isCreateNewPlace }) {
       .catch((error) => console.log(error));
   };
 
+  const handleEdit = (place) => {
+    setEditedPlace(place);
+    setIsEditing(true);
+  };
+
+  const updatePlace = (updatedPlace) => {
+    fetch(`${URL}/${updatedPlace.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: updatedPlace.name,
+        location: updatedPlace.location,
+        image: updatedPlace.image,
+        description: updatedPlace.description,
+      }),
+    })
+      .then((res) => res.json())
+      .then((updatedPlaceFromServer) => {
+        setPlacesArray((prevPlaces) =>
+          prevPlaces.map((place) =>
+            place.id === updatedPlaceFromServer.id
+              ? updatedPlaceFromServer
+              : place
+          )
+        );
+        setPlaceDetails(updatedPlaceFromServer);
+        setIsEditing(false);
+        setEditedPlace(null);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       <Search
@@ -86,7 +124,10 @@ function Main({ isCreateNewPlace }) {
       />
       <div className="main-container">
         <div className="places-details-container">
-          <PlacesCollection placesArray={displayedPlaces} handlePlace={handlePlace} />
+          <PlacesCollection
+            placesArray={displayedPlaces}
+            onEdit={handleEdit}
+            handlePlace={handlePlace} />
           <PlaceDetails
             details={placeDetails}
             handlePlace={handlePlace}
@@ -94,8 +135,16 @@ function Main({ isCreateNewPlace }) {
             isEditReview={isEditReview}
             cnahgePostOrEdit={cnahgePostOrEdit}
             editReview={editReview}
-            onDelete={handleDelete} />
+            onDelete={handleDelete}
+            onEdit={handleEdit} />
         </div>
+        {isEditing && editedPlace && (
+          <EditForm
+            place={editedPlace}
+            onUpdatePlace={updatePlace}
+            onCancelEdit={() => setIsEditing(false)}
+          />
+        )}
         {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>
       <br />

@@ -3,15 +3,15 @@ import PlaceReview from './PlaceReview';
 import ReviewForm from './ReviewForm';
 import ReviewEditForm from './ReviewEditForm';
 
-function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahgePostOrEdit, editReview, onDelete }) {
+function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahgePostOrEdit, editReview, onDelete, onEdit }) {
 
   const handleDelete = () => {
     onDelete(details.id);
   };
 
   const handleEdit = () => {
-    console.log('test')
-  }
+    onEdit(details);
+  };
 
   // console.log('1 details :: ', details)
   const reviewsArr = details.reviews
