@@ -32,7 +32,7 @@ function CreateNewPlace({ onCreatePlace }) {
   };
 
   return (
-    <div className="create-new-place-container">
+    <div className>
       <h2>Create New Place</h2>
       <form onSubmit={handleSubmit}>
         <label>

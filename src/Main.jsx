@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from './Search.jsx';
 import PlacesCollection from './PlacesCollection';
-import PlaceDetails from './PlaceDetails.jsx';
+import PlaceDetails from './PlaceDetails';
 import Footer from './Footer.jsx';
 import CreateNewPlace from './CreateNewPlace.jsx';
 
@@ -44,15 +44,28 @@ function Main({ isCreateNewPlace }) {
       .catch((error) => console.log(error));
   };
 
+  const handleDelete = (id) => {
+    fetch(`${URL}/${id}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        setPlacesArray((prevPlaces) => prevPlaces.filter((place) => place.id !== id));
+        setPlaceDetails({});
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
-      <Search />
-      <div className="main-container">
-        <div className="places-details-container">
-          <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
-          <PlaceDetails details={placeDetails} />
+    <Search/>
+    <div className="main-container">
+    <div className="places-details-container">
+      <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
+      <PlaceDetails details={placeDetails} onDelete={handleDelete} />
+    </div>
+    <div className="create-new-place-container">
+          {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
         </div>
-        {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>
       <br />
       <br />
