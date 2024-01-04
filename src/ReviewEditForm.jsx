@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 
-function ReviewForm({ onSubmitReview }) {
-  const d = new Date();
-  const createdDate = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+function ReviewEditForm({ editReview, onUpdateReview }) {
 
   const tempReview = {
-    id: +Math.random().toString().split('.')[1],
-    name: '',
-    description: '',
-    created: createdDate
+    id: editReview.id,
+    name: editReview.name,
+    description: editReview.description,
+    created: editReview.created
+  }
+
+  const clearReview = {
+    id: 0,
+    name: "",
+    description: "",
+    created: ""
   }
 
   const [review, setReview] = useState(tempReview);
@@ -20,14 +25,14 @@ function ReviewForm({ onSubmitReview }) {
     setReview({ ...review, [name]: value });
   }
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
-    onSubmitReview(review);
-    setReview(tempReview)
+    onUpdateReview(review);
+    setReview(clearReview)
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleUpdate}>
       <hr />
       <label>Name:</label>
       <input type="text" name="name" value={review.name} onChange={handleChange} required />
@@ -36,9 +41,9 @@ function ReviewForm({ onSubmitReview }) {
       <label>Comment:</label>
       <textarea type="text" name="description" rows="4" cols="50" value={review.description} onChange={handleChange} required />
       <br />
-      <button type="submit">Post Review</button>
+      <button type="submit">Update Review</button>
     </form>
   );
 }
 
-export default ReviewForm;
+export default ReviewEditForm;

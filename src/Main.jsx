@@ -9,6 +9,8 @@ function Main({ isCreateNewPlace }) {
   const URL = 'http://localhost:3001/places';
   const [placesArray, setPlacesArray] = useState([]);
   const [placeDetails, setPlaceDetails] = useState({});
+  const [isEditReview, setIsEditReview] = useState(false)
+  const [editReview, setEditReview] = useState({})
 
   const handlePlace = (place) => {
     if (isCreateNewPlace) {
@@ -17,6 +19,15 @@ function Main({ isCreateNewPlace }) {
       setPlaceDetails(place);
     }
   };
+
+  const onEditReview = (review) => {
+    setEditReview(review)
+    setIsEditReview(true)
+  }
+
+  const cnahgePostOrEdit = (trOrFs) => {
+    setIsEditReview(trOrFs)
+  }
 
   useEffect(() => {
     fetch(URL)
@@ -49,8 +60,16 @@ function Main({ isCreateNewPlace }) {
       <Search />
       <div className="main-container">
         <div className="places-details-container">
-          <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
-          <PlaceDetails details={placeDetails} handlePlace={handlePlace} />
+          <PlacesCollection
+            placesArray={placesArray}
+            handlePlace={handlePlace} />
+          <PlaceDetails
+            details={placeDetails}
+            handlePlace={handlePlace}
+            onEditReview={onEditReview}
+            isEditReview={isEditReview}
+            cnahgePostOrEdit={cnahgePostOrEdit}
+            editReview={editReview} />
         </div>
         {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>

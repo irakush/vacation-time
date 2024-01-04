@@ -1,19 +1,39 @@
 import React, { useState } from 'react';
 import PlaceReview from './PlaceReview';
 import ReviewForm from './ReviewForm';
+import ReviewEditForm from './ReviewEditForm';
 
-function PlaceDetails({ details, handlePlace }) {
-  console.log('1 details :: ', details)
+function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahgePostOrEdit, editReview }) {
+  // const editReviewObj = {
+  //   name: "",
+  //   description: "",
+  //   created: ""
+  // }
+
+  // console.log('1 details :: ', details)
   const reviewsArr = details.reviews
 
-  const onSubmit = (newReview) => {
+  const onSubmitReview = (newReview) => {
     reviewsArr.push(newReview)
     patchReviewInDB(reviewsArr)
   }
 
-  const onDelete = (deletedReview) => {
+  const onUpdateReview = (updatedReview) => {
+    const reviewsWithUpdated = reviewsArr.map(eachReview => {
+      if (eachReview.id === updatedReview.id) {
+        return updatedReview
+      } else {
+        return eachReview
+      }
+
+    })
+    patchReviewInDB(reviewsWithUpdated)
+    cnahgePostOrEdit(false)
+  }
+
+  const onDeleteReview = (deletedReview) => {
     const reviewsWTDeleted = reviewsArr.filter(eachReview => {
-      return eachReview.name !== deletedReview.name
+      return eachReview.id !== deletedReview.id
     })
     patchReviewInDB(reviewsWTDeleted)
   }
@@ -28,7 +48,6 @@ function PlaceDetails({ details, handlePlace }) {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('RES DATA: ', data)
         handlePlace(data)
       })
   }
@@ -38,7 +57,7 @@ function PlaceDetails({ details, handlePlace }) {
 
     const reviewsDetails = reviews.map(eachReview => {
       console.log('create Review Details')
-      return <PlaceReview eachReview={eachReview} key={eachReview.name} onDelete={onDelete} />
+      return <PlaceReview eachReview={eachReview} key={eachReview.id} onDeleteReview={onDeleteReview} onEditReview={onEditReview} />
     })
 
     return (
@@ -50,7 +69,8 @@ function PlaceDetails({ details, handlePlace }) {
           <small>{description}</small>
           {reviewsDetails}
           {/* <PlaceReview eachReview={reviews.filter(review => review.placeId === details.id)} onReviewSubmit={handleReviewSubmit} /> */}
-          <ReviewForm onSubmit={onSubmit} />
+          {!isEditReview && <ReviewForm onSubmitReview={onSubmitReview} />}
+          {isEditReview && <ReviewEditForm editReview={editReview} onUpdateReview={onUpdateReview} />}
           {/* onSubmit={onReviewSubmit}  */}
         </div>
       </div>
