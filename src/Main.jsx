@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Search from './Search.jsx';
 import PlacesCollection from './PlacesCollection';
-import PlaceDetails from './PlaceDetails.jsx';
+import PlaceDetails from './PlaceDetails';
 import Footer from './Footer.jsx';
-import CreateNewPlace from './CreateNewPlace.jsx';
+import EditForm from './EditForm';
 
 function Main({ isCreateNewPlace }) {
   const URL = 'http://localhost:3001/places';
   const [placesArray, setPlacesArray] = useState([]);
   const [placeDetails, setPlaceDetails] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedPlace, setEditedPlace] = useState(null);
 
   const handlePlace = (place) => {
-    if (isCreateNewPlace) {
-      setPlaceDetails(place);
-    } else {
-      setPlaceDetails(place);
-    }
+    setPlaceDetails(place);
   };
 
   useEffect(() => {
@@ -28,18 +26,50 @@ function Main({ isCreateNewPlace }) {
       .catch((error) => console.log);
   }, []);
 
-  const createNewPlace = (newPlace) => {
-    fetch(URL, {
-      method: 'POST',
+  const handleDelete = (deletedPlaceId) => {
+    fetch(`${URL}/${deletedPlaceId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        setPlacesArray((prevPlaces) =>
+          prevPlaces.filter((place) => place.id !== deletedPlaceId)
+        );
+        setPlaceDetails({});
+        setIsEditing(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleEdit = (place) => {
+    setEditedPlace(place);
+    setIsEditing(true);
+  };
+
+  const updatePlace = (updatedPlace) => {
+    fetch(`${URL}/${updatedPlace.id}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newPlace),
+      body: JSON.stringify({
+        name: updatedPlace.name,
+        location: updatedPlace.location,
+        image: updatedPlace.image,
+        description: updatedPlace.description,
+      }),
     })
       .then((res) => res.json())
-      .then((createdPlace) => {
-        setPlacesArray((prevPlaces) => [...prevPlaces, createdPlace]);
-        setPlaceDetails(createdPlace);
+      .then((updatedPlaceFromServer) => {
+        setPlacesArray((prevPlaces) =>
+          prevPlaces.map((place) =>
+            place.id === updatedPlaceFromServer.id
+              ? updatedPlaceFromServer
+              : place
+          )
+        );
+        setPlaceDetails(updatedPlaceFromServer);
+        setIsEditing(false);
+        setEditedPlace(null);
       })
       .catch((error) => console.log(error));
   };
@@ -49,10 +79,26 @@ function Main({ isCreateNewPlace }) {
       <Search />
       <div className="main-container">
         <div className="places-details-container">
-          <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
-          <PlaceDetails details={placeDetails} />
+          <PlacesCollection
+            placesArray={placesArray}
+            handlePlace={handlePlace}
+            onDelete={handleDelete}
+          />
+          <PlaceDetails
+            details={placeDetails}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         </div>
-        {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
+        <div className="create-new-place-container">
+          {isEditing && editedPlace && (
+            <EditForm
+              place={editedPlace}
+              onUpdatePlace={updatePlace}
+              onCancelEdit={() => setIsEditing(false)}
+            />
+          )}
+        </div>
       </div>
       <br />
       <br />
