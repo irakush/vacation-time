@@ -9,7 +9,7 @@ function Main({ isCreateNewPlace }) {
   const URL = 'http://localhost:3001/places';
   const [placesArray, setPlacesArray] = useState([]);
   const [placeDetails, setPlaceDetails] = useState({});
-
+const [searchTerm, setSearchTerm] = useState("")
   const handlePlace = (place) => {
     if (isCreateNewPlace) {
       setPlaceDetails(place);
@@ -44,13 +44,25 @@ function Main({ isCreateNewPlace }) {
       .catch((error) => console.log(error));
   };
 
+  const onHandleSearch = (searchValue) => {
+  setSearchTerm(searchValue);
+  }
+  console.log(searchTerm);
+
+  const displayedPlaces = placesArray.filter((place) => {
+    return place.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <>
-      <Search />
+      <Search  
+      searchTerm={searchTerm}
+      onHandleSearch={onHandleSearch}
+      />
       <div className="main-container">
         <div className="places-details-container">
-          <PlacesCollection placesArray={placesArray} handlePlace={handlePlace} />
-          <PlaceDetails details={placeDetails} handlePlace={handlePlace} />
+        <PlacesCollection placesArray={displayedPlaces} handlePlace={handlePlace} />
+         <PlaceDetails details={placeDetails} handlePlace={handlePlace} />
         </div>
         {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>
