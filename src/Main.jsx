@@ -62,7 +62,13 @@ const [searchTerm, setSearchTerm] = useState("")
       <div className="main-container">
         <div className="places-details-container">
         <PlacesCollection placesArray={displayedPlaces} handlePlace={handlePlace} />
-         <PlaceDetails details={placeDetails} handlePlace={handlePlace} />
+        <PlaceDetails
+            details={placeDetails}
+            handlePlace={handlePlace}
+            onEditReview={onEditReview}
+            isEditReview={isEditReview}
+            cnahgePostOrEdit={cnahgePostOrEdit}
+            editReview={editReview} />
         </div>
         {isCreateNewPlace && <CreateNewPlace onCreatePlace={createNewPlace} />}
       </div>
