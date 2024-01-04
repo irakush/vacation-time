@@ -12,7 +12,7 @@ function Main({ isCreateNewPlace }) {
   const [searchTerm, setSearchTerm] = useState("")
   const [isEditReview, setIsEditReview] = useState(false)
   const [editReview, setEditReview] = useState({})
-  
+
   const handlePlace = (place) => {
     if (isCreateNewPlace) {
       setPlaceDetails(place);
@@ -20,6 +20,15 @@ function Main({ isCreateNewPlace }) {
       setPlaceDetails(place);
     }
   };
+
+  const onEditReview = (review) => {
+    setEditReview(review)
+    setIsEditReview(true)
+  }
+
+  const cnahgePostOrEdit = (trOrFs) => {
+    setIsEditReview(trOrFs)
+  }
 
   useEffect(() => {
     fetch(URL)
@@ -64,7 +73,7 @@ function Main({ isCreateNewPlace }) {
       />
       <div className="main-container">
         <div className="places-details-container">
-        <PlacesCollection placesArray={displayedPlaces} handlePlace={handlePlace} />
+          <PlacesCollection placesArray={displayedPlaces} handlePlace={handlePlace} />
           <PlaceDetails
             details={placeDetails}
             handlePlace={handlePlace}
