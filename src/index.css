@@ -71,7 +71,11 @@ h1 {
   flex: 1;
   padding-right: 50px;
   text-align: right;
-  vertical-align: bottom;
+  vertical-align: top;
+}
+
+.side-by-side {
+  display: flex;
 }
 
 .orange-color {

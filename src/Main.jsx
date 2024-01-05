@@ -7,6 +7,20 @@ import CreateNewPlace from './CreateNewPlace.jsx';
 import EditForm from './EditForm';
 
 function Main({ isCreateNewPlace }) {
+
+  // condition.text icon
+  // location.localtime
+  const WeatherURL = 'http://api.weatherapi.com/v1/current.json?key'
+  const APIKEY = process.env.REACT_APP_API_KEY.toString()
+
+
+  const weather = {
+    condition: "",
+    temp: "",
+    localtime: "",
+    icon: ""
+  }
+
   const URL = 'http://localhost:3001/places';
   const [placesArray, setPlacesArray] = useState([]);
   const [placeDetails, setPlaceDetails] = useState({});
@@ -15,6 +29,7 @@ function Main({ isCreateNewPlace }) {
   const [editReview, setEditReview] = useState({})
   const [isEditing, setIsEditing] = useState(false);
   const [editedPlace, setEditedPlace] = useState(null);
+  const [placeWeather, setPlaceWeather] = useState(weather);
 
   const handlePlace = (place) => {
     // if (isCreateNewPlace) {
@@ -22,7 +37,38 @@ function Main({ isCreateNewPlace }) {
     // } else {
     //   setPlaceDetails(place);
     // }
-    setPlaceDetails(place);
+
+    // http://api.weatherapi.com/v1/current.json?key==454a8d443f51400b821164720240501&qMinsk&aqi=no
+    // http://api.weatherapi.com/v1/current.json?key=454a8d443f51400b821164720240501&q=London&aqi=no
+    // http://api.weatherapi.com/v1/current.json?key=454a8d443f51400b821164720240501&qMinsk&aqi=no
+    // ${WeatherURL}=${APIKEY}&q${place.location.split(',')[0]}&aqi=no
+
+    console.log(APIKEY)
+    console.log(`${WeatherURL}=${APIKEY}&q=${place.location.split(',')[0]}&aqi=no`)
+
+    fetch(`${WeatherURL}=${APIKEY}&q=${place.location.split(',')[0]}&aqi=no`)
+      .then(res => res.json())
+      .then(data => {
+        console.log('weather:  ', data)
+        // return (
+        //   <div className="weather">
+        //     <p>{data ? data.current.city : "1"}</p>
+        //     <p>{data ? data.current.temp_f : "1"}</p>
+        //   </div>
+        // )
+        const weatherObj = {
+          condition: data.current.condition.text,
+          temp: data.current.temp_f,
+          localtime: data.location.localtime,
+          icon: data.current.condition.icon
+        }
+        setPlaceWeather(prev => weatherObj)
+        setPlaceDetails(place);
+        console.log('place weather -------- ', placeWeather)
+      })
+      .catch(error => {
+        setPlaceDetails(place);
+      })
   };
 
   const onEditReview = (review) => {
@@ -136,7 +182,8 @@ function Main({ isCreateNewPlace }) {
             cnahgePostOrEdit={cnahgePostOrEdit}
             editReview={editReview}
             onDelete={handleDelete}
-            onEdit={handleEdit} />
+            onEdit={handleEdit}
+            placeWeather={placeWeather} />
         </div>
         {isEditing && editedPlace && (
           <EditForm

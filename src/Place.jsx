@@ -4,11 +4,8 @@ function Place({ eachPlace, handlePlace, onHandleDelete }) {
   const { name, image, location } = eachPlace
 
   function showPlaceDetails() {
-    console.log('clicked')
     handlePlace(eachPlace)
   }
-
-  console.log(process.env.REACT_APP_API_KEY)
 
   return (
     <div className="card" onClick={showPlaceDetails} handleDelete={onHandleDelete}>
