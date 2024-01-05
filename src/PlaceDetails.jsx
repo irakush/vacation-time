@@ -2,8 +2,19 @@ import React, { useState } from 'react';
 import PlaceReview from './PlaceReview';
 import ReviewForm from './ReviewForm';
 import ReviewEditForm from './ReviewEditForm';
+import { NavLink } from "react-router-dom"
+import PlaceWeather from './PlaceWeather';
 
-function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahgePostOrEdit, editReview, onDelete, onEdit }) {
+function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahgePostOrEdit, editReview, onDelete, onEdit, placeWeather }) {
+
+  const buttonStyle = {
+    padding: '2px',
+    backgroundColor: 'blue',
+    color: 'white',
+    textDecoration: 'none', // To remove default link styling
+    borderRadius: '5px',
+    cursor: 'pointer',
+  };
 
   const handleDelete = () => {
     onDelete(details.id);
@@ -67,11 +78,20 @@ function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahge
       <div className="horizontal-card">
         <img src={image} alt="Description" className="horizontal-card-image" />
         <div className="horizontal-card-content">
-          <h2>{name}</h2>
-          <h4>{location}</h4>
-          <small>{description}</small>
+          <div className="side-by-side">
+            <div className="left-section">
+              <h2>{name}</h2>
+              <h4>{location}</h4>
+              <small>{description}</small>
+              <br />
+              <br />
+            </div>
+            <div className="right-section">
+              <PlaceWeather placeWeather={placeWeather} />
+            </div>
+          </div>
           <div className="action-buttons">
-            <button onClick={handleEdit}>Edit</button>
+            <NavLink to="/editplace" state={{ details }} style={buttonStyle} >Edit</ NavLink>&nbsp; &nbsp; &nbsp;
             <button onClick={handleDelete}>Delete</button>
           </div>
           {reviewsDetails}

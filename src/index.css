@@ -71,7 +71,11 @@ h1 {
   flex: 1;
   padding-right: 50px;
   text-align: right;
-  vertical-align: bottom;
+  vertical-align: top;
+}
+
+.side-by-side {
+  display: flex;
 }
 
 .orange-color {
@@ -268,10 +272,10 @@ section {
 }
 
 .create-new-place-container {
-  background-color: #eeeeee; 
+  background-color: #eeeeee;
   padding: 20px;
-  margin: 10px auto; 
-  width: 80%; 
+  margin: 10px auto;
+  width: 80%;
   max-width: 900px;
   text-align: center;
 }
@@ -281,5 +285,5 @@ section {
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px; 
+  border-radius: 5px;
 }

@@ -18,7 +18,7 @@
         {
           "id": 2,
           "name": "Jack Hector",
-          "description": "This place was tremendous.  My wife and I really enjoyed our time here. !!! !!--",
+          "description": "This place was tremendous.  My wife and I really enjoyed our time here. ",
           "created": "05/08/2023"
         }
       ]
@@ -117,6 +117,14 @@
       "description": "Best place in the world!",
       "reviews": [],
       "id": 6
+    },
+    {
+      "name": "Minsk",
+      "image": "https://static.realting.com/uploads/bigSlider/49d/2a996516eaaa9.webp",
+      "location": "Minsk, Belarus",
+      "description": "Best city in the world!",
+      "reviews": [],
+      "id": 7
     }
   ]
 }
