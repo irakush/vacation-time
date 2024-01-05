@@ -87,34 +87,34 @@ function Main({ isCreateNewPlace }) {
     setIsEditing(true);
   };
 
-  const updatePlace = (updatedPlace) => {
-    fetch(`${URL}/${updatedPlace.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: updatedPlace.name,
-        location: updatedPlace.location,
-        image: updatedPlace.image,
-        description: updatedPlace.description,
-      }),
-    })
-      .then((res) => res.json())
-      .then((updatedPlaceFromServer) => {
-        setPlacesArray((prevPlaces) =>
-          prevPlaces.map((place) =>
-            place.id === updatedPlaceFromServer.id
-              ? updatedPlaceFromServer
-              : place
-          )
-        );
-        setPlaceDetails(updatedPlaceFromServer);
-        setIsEditing(false);
-        setEditedPlace(null);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const updatePlace = (updatedPlace) => {
+  //   fetch(`${URL}/${updatedPlace.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       name: updatedPlace.name,
+  //       location: updatedPlace.location,
+  //       image: updatedPlace.image,
+  //       description: updatedPlace.description,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((updatedPlaceFromServer) => {
+  //       setPlacesArray((prevPlaces) =>
+  //         prevPlaces.map((place) =>
+  //           place.id === updatedPlaceFromServer.id
+  //             ? updatedPlaceFromServer
+  //             : place
+  //         )
+  //       );
+  //       setPlaceDetails(updatedPlaceFromServer);
+  //       setIsEditing(false);
+  //       setEditedPlace(null);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   return (
     <>
@@ -141,7 +141,7 @@ function Main({ isCreateNewPlace }) {
         {isEditing && editedPlace && (
           <EditForm
             place={editedPlace}
-            onUpdatePlace={updatePlace}
+            // onUpdatePlace={updatePlace}
             onCancelEdit={() => setIsEditing(false)}
           />
         )}

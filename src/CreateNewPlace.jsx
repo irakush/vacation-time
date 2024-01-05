@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CreateNewPlace({ onCreatePlace }) {
+  const URL = 'http://localhost:3001/places';
+  const navigate = useNavigate();
+
   const [newPlace, setNewPlace] = useState({
     name: '',
     image: '',
@@ -20,7 +24,7 @@ function CreateNewPlace({ onCreatePlace }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onCreatePlace(newPlace);
+    createNewPlace(newPlace);
 
     setNewPlace({
       name: '',
@@ -31,8 +35,26 @@ function CreateNewPlace({ onCreatePlace }) {
     });
   };
 
+  const createNewPlace = (newPlace) => {
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPlace),
+    })
+      .then((res) => res.json())
+      .then((createdPlace) => navigate('/'))
+      .catch((error) => console.log(error));
+  };
+
   return (
-    <div className="create-new-place-container">
+    <div >
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <h2>Create New Place</h2>
       <form onSubmit={handleSubmit}>
         <label>

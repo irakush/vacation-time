@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import PlaceReview from './PlaceReview';
 import ReviewForm from './ReviewForm';
 import ReviewEditForm from './ReviewEditForm';
+import { NavLink } from "react-router-dom"
 
 function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahgePostOrEdit, editReview, onDelete, onEdit }) {
+
+  const buttonStyle = {
+    padding: '2px',
+    backgroundColor: 'blue',
+    color: 'white',
+    textDecoration: 'none', // To remove default link styling
+    borderRadius: '5px',
+    cursor: 'pointer',
+  };
 
   const handleDelete = () => {
     onDelete(details.id);
@@ -63,6 +73,8 @@ function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahge
       return <PlaceReview eachReview={eachReview} key={eachReview.id} onDeleteReview={onDeleteReview} onEditReview={onEditReview} />
     })
 
+    // const someData = 'Hello from props!';
+
     return (
       <div className="horizontal-card">
         <img src={image} alt="Description" className="horizontal-card-image" />
@@ -70,8 +82,10 @@ function PlaceDetails({ details, handlePlace, onEditReview, isEditReview, cnahge
           <h2>{name}</h2>
           <h4>{location}</h4>
           <small>{description}</small>
+          <br />
+          <br />
           <div className="action-buttons">
-            <button onClick={handleEdit}>Edit</button>
+            <NavLink to="/editplace" state={{ details }} style={buttonStyle} >Edit</ NavLink>&nbsp; &nbsp; &nbsp;
             <button onClick={handleDelete}>Delete</button>
           </div>
           {reviewsDetails}

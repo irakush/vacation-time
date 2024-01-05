@@ -1,38 +1,39 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
-
+import {Routes, Route} from "react-router-dom"
+import CreateNewPlace from './CreateNewPlace.jsx'
+import EditForm from './EditForm.jsx'
+import PlaceDetails from './PlaceDetails.jsx'
 
 function App() {
-  const [isCreateNewPlace, setIsCreateNewPlace] = useState(false);
-
-  const createNewPlace = (newPlace) => {
-    console.log('New Place:', newPlace);
-    setIsCreateNewPlace(false);
-  };
-
-  const handlePlace = (eachPlace) => {
-    console.log('Clicked on Place:', eachPlace);
-  };
-
-  const handleCancelCreatePlace = () => {
-    setIsCreateNewPlace(false);
-  };
-
-  const handleNewPlaceClick = () => {
-    setIsCreateNewPlace(true);
-  };
 
   return (
     <div className="App">
-      <Header onNewPlaceClick={handleNewPlaceClick} />
-      <Main
-        isCreateNewPlace={isCreateNewPlace}
-        onCreatePlace={createNewPlace} 
-        onCancelCreatePlace={handleCancelCreatePlace}
-        onPlaceClick={handlePlace}
-      />
+      <Header />
+      <Routes>
+        <Route path="/"
+          element={
+            <Main />
+          }
+        />
+        <Route path="/newplace"
+          element={
+            <CreateNewPlace />
+          }
+        />
+        <Route path="/editplace"
+          element={
+            <EditForm />
+          }
+        />
+        <Route path="/showplace"
+          element={
+            <PlaceDetails />
+          }
+        />
+      </Routes>
     </div>
   );
 }

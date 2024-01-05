@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function EditForm({ place, onUpdatePlace, onCancelEdit }) {
+function EditForm({ place }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  place = location.state.details;
+
+  console.log('receivedData =====> ', place)
+
   const [editedPlace, setEditedPlace] = useState({ ...place });
+  const [placesArray, setPlacesArray] = useState([]);
+  const [placeDetails, setPlaceDetails] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const URL = 'http://localhost:3001/places';
 
   useEffect(() => {
     setEditedPlace(place);
@@ -17,11 +29,46 @@ function EditForm({ place, onUpdatePlace, onCancelEdit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdatePlace(editedPlace);
+    updatePlace(editedPlace);
+  };
+
+  const updatePlace = (updatedPlace) => {
+    fetch(`${URL}/${updatedPlace.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: updatedPlace.name,
+        location: updatedPlace.location,
+        image: updatedPlace.image,
+        description: updatedPlace.description,
+      }),
+    })
+      .then((res) => res.json())
+      .then((updatedPlaceFromServer) => {
+        navigate('/')
+        // setPlacesArray((prevPlaces) =>
+        //   prevPlaces.map((place) =>
+        //     place.id === updatedPlaceFromServer.id
+        //       ? updatedPlaceFromServer
+        //       : place
+        //   )
+        // );
+        // setPlaceDetails(updatedPlaceFromServer);
+        // setIsEditing(false);
+        // setEditedPlace(null);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <label>
         Name:
         <input
@@ -59,6 +106,7 @@ function EditForm({ place, onUpdatePlace, onCancelEdit }) {
         Description:
         <textarea
           name="description"
+          rows="4" cols="50"
           value={editedPlace.description}
           onChange={handleChange}
           required
@@ -66,9 +114,9 @@ function EditForm({ place, onUpdatePlace, onCancelEdit }) {
       </label>
       <br />
       <button type="submit">Update Place</button>
-      <button type="button" onClick={onCancelEdit}>
+      {/* <button type="button" onClick={onCancelEdit}>
         Cancel
-      </button>
+      </button> */}
     </form>
   );
 }
