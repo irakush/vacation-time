@@ -9,7 +9,7 @@ function PlaceWeather({ placeWeather }) {
         <div className="weather">
           <img src={`http:${icon}`} alt="weather" />
           <p>{condition}</p>
-          <p>{temp}</p>
+          <p>{temp} &deg;F</p>
           {/* <p>{localtime} F</p> */}
         </div>
       )
